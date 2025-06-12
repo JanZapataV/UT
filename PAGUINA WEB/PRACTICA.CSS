@@ -1,0 +1,424 @@
+/*Esto de abajo es para importar la fuente de la página*/
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+/*Estas son cosas que se usan seguido entonces se hacen variables*/
+:root {
+  --primary-color: #3c3d53;
+  --secondary-color: #2c9338;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  transition: transform 0.3s ease; /*Esto es para que el movimiento de 200px se haga lento durante 0.3 segundos*/
+}
+
+/*Clase para mostrarla barra de navegación,
+se mueve toda la página 200px a la derecha, que hace que
+se vea la barra de navegación*/
+body.show-nav {
+  transform: translateX(200px);
+}
+
+nav {
+  background-color: var(--primary-color);
+  border-right: 2px solid rgba(142, 0, 0, 0.1);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 100;
+  transform: translateX(-100%); /*Se mueve a la izquierda para que no se vea*/
+}
+
+nav .logo {
+  padding: 30px 0;
+  text-align: center;
+}
+
+nav .logo img {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+nav ul li {
+  border-bottom: 2px solid rgba(200, 200, 200, 0.1);
+  padding: 20px;
+}
+
+nav ul li:first-of-type {
+  border-top: 2px solid rgba(200, 200, 200, 0.1);
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 130%;
+  position: relative;
+  padding: 40px 15px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin: 30px 0;
+}
+/*boton*/
+button,
+input[type='submit'] {
+  background-color: var(--secondary-color);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 8px;
+  
+}
+
+button:focus {
+  outline: none;
+}
+
+.toggle {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.cta-btn {
+  padding: 12px 30px;
+  font-size: 20px;
+  margin-left: 85%;
+}
+
+.container {
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 800px;
+}
+
+.modal-container {
+  background-color: rgba(20, 100, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-container.show-modal {
+  display: block;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 400px;
+  animation-name: modalopen;
+  animation-duration: 1s; 
+}
+
+.modal-header {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  border-bottom: 1px solid #333;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-form div {
+  margin: 15px 0;
+}
+
+.modal-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal-form .form-input {
+  padding: 8px;
+  width: 100%;
+}
+
+.close-btn {
+  background: transparent;
+  font-size: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*cuadro gris de informacion*/
+  aside {
+    width: 300px;
+    background: #161f26;
+    padding: 28px;
+    color: #fff;
+    float: right;/*el lado del cuadro*/
+  }
+  
+  aside .widget {
+    margin-bottom: 28px;
+  }
+  
+  aside .widget .titulo {
+    color: rgb(44	147	56);
+    border-bottom: 2px solid rgb(255, 199, 8);
+    margin-bottom: 18px;
+  }
+  
+  aside .widget ul {
+    list-style: none;
+  }
+  
+  aside .widget ul li {
+    border-bottom: 2px solid rgb(255, 255, 255, 255);
+    padding: 12px 0;
+  }
+  
+  aside .widget ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  aside .widget ul li a:hover {
+    color: rgb(44	147	56);
+  }
+  
+  aside .widget p {
+    line-height: 25px;
+  }
+  
+  footer {
+    width: 70%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    overflow: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  @media(max-width:750px){
+    body{
+        background: #000;
+    }
+  }
+
+/*Keyframe, es usado para describir que cambios sucederan en una
+animación, en este caso la opacidad pasara de ser 0 (no se ve nada)
+a 1 (se ve todo)*/
+@keyframes modalopen { 
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.nosotros{
+	padding: 100px 100px;
+	text-align: justify;
+	margin: 20px 0px;
+    background-repeat: no-repeat;
+    background-position: center; /* Centra la imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+}
+
+/*intrface 2*/
+.menu-links {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinea horizontalmente los elementos */
+    gap: 10px; /* Espaciado entre enlaces */
+    position: absolute; /* Posiciona en la parte superior derecha */
+    top: 20px; /* Espaciado desde la parte superior */
+    right: 20px; /* Espaciado desde la derecha */
+  }
+  
+  .menu-links li {
+    display: inline-block;
+  }
+  
+  .menu-links a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: #ffffff; /* Texto blanco */
+    font-weight: bold;
+    font-size: 14px; /* Tamaño de fuente */
+    padding: 5px 10px; /* Espaciado interno */
+    transition: color 0.3s ease; /* Suaviza el cambio de color */
+  }
+  
+  .menu-links a:hover {
+    color: #789a7d; /* Cambia el color de la letra a un gris oscuro al pasar el cursor */
+  }
+  
+  
+  /*spam*/
+  .footer {
+    position: fixed; /* Hace que el footer se quede en la esquina incluso cuando se haga scroll */
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    left: 20px; /* Ajusta la distancia desde la izquierda */
+    display: flex; /* Usamos flexbox para alinear la imagen y el texto */
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    background-color: #3c3d53; /* Fondo oscuro para el contenedor */
+    padding: 10px 20px; /* Padding para darle espacio alrededor del contenido */
+    border-radius: 10px; /* Esquinas redondeadas */
+    z-index: 10; /* Asegura que el footer quede por encima de otros elementos */
+  }
+  
+  .footer img {
+    width: 40px; /* Ancho de la imagen */
+    height: 40px; /* Alto de la imagen */
+    border-radius: 10px; /* Esquinas redondeadas para la imagen */
+  }
+  
+  .footer .school-name {
+    font-size: 14px; /* Tamaño de la fuente del nombre */
+    color: #ffffff; /* Color blanco para el texto */
+    font-weight: bold; /* Negrita en el texto */
+    margin-left: 10px; /* Espacio entre la imagen y el texto */
+  }
+  /*imagen ut*/
+.fq {
+    display: flex;
+    align-items: center;
+    position: absolute;  /* Usamos 'absolute' para moverlo */
+    left: 100px;  /* Mueve el logo a la derecha, ajusta el valor según lo necesites */
+    bottom: 50px; /* Lo coloca en la parte inferior de la pantalla */
+    padding-left: 10px; /* Un pequeño margen para no pegarse a la esquina */
+  }
+  
+  .fq img {
+    width: 125px; /* Tamaño de la imagen del logo */
+    height: auto;
+    margin-right: 22px; /* Espacio entre el logo y el texto */
+  }
+  
+  .site-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  /* Barra de busqueda */
+  /* Estilos para la barra de búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+   /* overflow: hidden;*/
+    width: 250px; /* Ajusta el ancho según sea necesario */
+    margin: 0 auto; /* Centra la barra en el encabezado */
+   /* position: absolute;*/
+    top: 20px; /* Ajusta la posición vertical */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .search-input {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    flex: 1;
+  }
+  
+  .search-button {
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #036f10; /* Un verde más oscuro al pasar el cursor */
+  }
+  
+  .search-button i {
+    font-size: 16px;
+  }
+/* encabezado fijo*/
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para el encabezado de redes sociales */
+.social-header {
+    display: flex;               /* Usamos flexbox para organizar los íconos en línea */
+    justify-content: center;     /* Centra los íconos horizontalmente */
+    align-items: center;         /* Centra los íconos verticalmente */
+    background-color: #3c3d53;      /* Color de fondo oscuro */
+    padding: 10px 0;             /* Espaciado vertical */
+}
+
+/* Estilo para los enlaces de los íconos */
+.social-header a {
+    color: white;                /* Color blanco para los íconos */
+    font-size: 24px;             /* Tamaño de los íconos */
+    margin: 0 15px;              /* Espaciado entre los íconos */
+    text-decoration: none;       /* Elimina el subrayado en los enlaces */
+    transition: color 0.3s ease; /* Efecto suave al cambiar el color */
+}
+
+/* Efecto al pasar el ratón sobre los íconos */
+.social-header a:hover {
+    color: #217a2b;              /* Cambia el color a naranja al pasar el ratón */
+}
+
+video {
+    width: 50%; /* Ocupa todo el ancho */
+    height: auto; /* Mantiene la proporción original del video */
+}
